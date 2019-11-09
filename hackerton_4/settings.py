@@ -129,6 +129,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hackerton_4', 'static')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # 로그인 시 유저네임으로 로그인 (or email)
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 # 회원가입 시 이메일 입력 필수 여부
