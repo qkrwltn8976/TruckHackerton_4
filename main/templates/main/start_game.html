@@ -60,10 +60,17 @@
         var correct = ""
         var cnt = 0
         var point = 0
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
         $.ajax({
             url: '{% url "main:music_list_of_game" gamename %}',
             type: 'POST',
+            headers: {
+				"X-CSRFToken": csrftoken
+			},
+            data: {
+				'csrfmiddlewaretoken': "{{ csrf_token }}",
+			},
             success: function (response) {
                 for (var i = 0; i < response.length; i++)
                     console.log(response[i].music)
