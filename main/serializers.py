@@ -15,9 +15,8 @@ class MusicSerializer(serializers.ModelSerializer):
 
 
 class MusicGameSerializer(serializers.ModelSerializer):
-    game = GameSerializer()
     music = MusicSerializer()
 
     class Meta:
         model = musicgame
-        fields = ['game', 'music']
+        fields = ['music']
