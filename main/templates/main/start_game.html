@@ -3,51 +3,125 @@
 
 <!-- css 링크 -->
 {% block header %}
-<link rel="stylesheet" href="../../../hackerton_4/static/assets/css/start_game.css">
+<!-- <link rel="stylesheet" href="{% static 'assets/css/start_game.css' %}"> -->
+<style>
+    *{  
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }  
+    p{
+        color: white;
+        font-size: 30px;
+    }  
+    .left{
+        width: 500px;
+        height: 500px;
+        float: left;
+    }
+    .right{
+        float: right;
+    }
+    .center{
+        position: absolute;
+        left: 50%; 
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+    img{
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+    }
+    .left_content{
+        background-color: rgba(0,0,0,0.5);
+        width: 50%;
+        height: 1080px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #fff;
+    }
+    .right_content{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 1080px;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+    }
+    h3{
+        margin-top: 45%;
+        font-size: 100px;
+    }
+    h1{
+        margin-top: 100px;
+        font-size: 70px;
+        color: orange;
+    }
+    button {
+    background-color: wheat;
+    border-color: orange;
+    border-radius: 10px;
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    border-width: 4px;
+    margin: auto;
+    display: block;
+    }
+</style>
+
 {% endblock %}
 
 {% block content %}
 <!-- 게임이 시작되면 나오는 페이지 -->
 
 <!-- 왼쪽 -->
-<div class="left">
+<div class="left" data-like="">
     <!-- 투표 왼쪽 이미지 -->
     <img src="" alt="" class="left_img">
 
     <!-- 왼쪽 정보 -->
+    <div class="cover">
+
+    </div>
     <div class="left_content">
         <h3 class="left_title" id="left_title">"왼쪽 정보 이름"</h3>
         <p class="left_Information">
             왼쪽 정보 내용
         </p>
+        <p class="left_like">0000검색수</p>
     </div>
 </div>
 
 <!-- 가운데 -->
 <div class="center">
     <!-- 카테고리 이름 -->
-    <h1 class="kategory_name">카테고리</h1>
+    <h1 class="kategory_name">{{gamename}}</h1>
     <!-- 현재 점수 표시 -->
     <p class="score">현재 점수 : 점수</p>
     <!-- vs 표시 -->
-    <div class="vs">vs</div>
+    <!-- <div class="vs">vs</div> -->
 </div>
 
 <!-- 오른쪽 -->
-<div class="right">
+<div class="right" data-like="">
     <!-- 오른쪽 이미지 -->
     <img src="" alt="" class="right_img">
     <!-- 오른쪽 내용 -->
     <div class="right_content">
-        <h3 class="right_title">"오른쪽 정보 이름"</h3>
+        <h3 class="right_title" data-like="">"오른쪽 정보 이름"</h3>
         <!-- 업,다운 버튼 -->
-        <div class="survey_button_">
-            <button class="up music" value="0">더 많이</button>
-            <button class="down music" value="0">더 적게</button>
-        </div>
         <p class="left_Information right_Information">
             오른쪽 정보 내용
         </p>
+        <div class="survey_button_">
+            <button class="up music" value='0'>더 많이</button>
+            <button class="down music" value='0'>더 적게</button>
+        </div>
+        
     </div>
 </div>
 
@@ -61,7 +135,6 @@
         var cnt = 0
         var point = 0
         var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-
         $.ajax({
             url: '{% url "main:music_list_of_game" gamename %}',
             type: 'POST',
@@ -74,12 +147,10 @@
             success: function (response) {
                 for (var i = 0; i < response.length; i++)
                     console.log(response[i].music)
-
                 prev_music = response[cnt]
                 curr_music = response[cnt + 1]
                 cnt += 1
                 correct = load_quiz(prev_music, curr_music, cnt)
-
                 $(".music").on('click', function () {
                     // alert("클릭한 노래의 좋아요:" + $(this).attr('value'));
                     console.log('---------------------')
@@ -89,32 +160,29 @@
                     if (correct==answer) {
                         console.log("정답")
                         point += 1
+                        $('.score').html('점수: '+point)
                         console.log('점수' + point)
                         cnt += 1
                         prev_music = curr_music
                         curr_music = response[cnt]
-
                         if (cnt != response.length) {
                             correct = load_quiz(prev_music, curr_music, cnt)
                         } else {
                             console.log('더이상 문제가 없어요')
                             window.location.href = "/end_game/" + point
                         }
-
                     } else {
                         console.log("오답")
                         console.log('점수' + point)
                         window.location.href = "/end_game/" + point
                     }
                 });
-
             },
             error: function (response) {
                 console.log(response);
             }
         });
     });
-
     function load_quiz(prev_music, curr_music, cnt) {
         console.log('---------------------')
         //좋아요 수 비교해 정답 저장
@@ -122,13 +190,12 @@
             correct = "더 많이"
         else
             correct = "더 적게"
-
         console.log( window.location.origin+prev_music.music.album_cover)
-        $('.left_title').html(prev_music.music.title + " " + prev_music.music.like)
+        $('.left_title').html(prev_music.music.title)
+        $('.left_like').html('좋아요: '+prev_music.music.like)
         $('.left_Information').html(prev_music.music.artist)
         $('.left_img').attr('src', prev_music.music.album_cover);
         $('.up').val(prev_music.music.like)
-
         $('.right_title').html(curr_music.music.title)
         $('.right_Information').html(curr_music.music.artist)
         $('.down').val(curr_music.music.like)

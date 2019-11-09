@@ -33,8 +33,8 @@ def music_list_of_game(request, gamename):
         return Response(serializer.data)
 
 def end_game(request, score):
-    image_number = random.randint(1, 3)
-    picture = end_page_picture.objects.get(pk=1)
+    image_number = random.randint(2, 8)
+    picture = end_page_picture.objects.get(pk=image_number)
     context = {
         'picture': picture,
         'score': score,
