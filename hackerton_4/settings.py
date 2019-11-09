@@ -25,7 +25,7 @@ SECRET_KEY = 's3)&usud6h)9rc5a1md-#hmggjmt41053zp7j6p)av8(%(mdy)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.124.198.108']
 
 
 # Application definition
@@ -128,6 +128,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hackerton_4', 'static')
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 로그인 시 유저네임으로 로그인 (or email)
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
