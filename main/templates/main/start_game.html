@@ -89,13 +89,13 @@
                             correct = load_quiz(prev_music, curr_music, cnt)
                         } else {
                             console.log('더이상 문제가 없어요')
-                            window.location.href = "/"
+                            window.location.href = "/end_game/" + point
                         }
 
                     } else {
                         console.log("오답")
                         console.log('점수' + point)
-                        window.location.href = "/"
+                        window.location.href = "/end_game/" + point
                     }
                 });
 
