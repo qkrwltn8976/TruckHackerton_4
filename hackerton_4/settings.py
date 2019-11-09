@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', # new
+    'rest_framework',
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new 소셜 미디어 아이디로 로그인
