@@ -1,6 +1,4 @@
-
 {% extends 'base.html' %}
- 
 {% load staticfiles %}
 
 <!-- css 링크 -->
@@ -9,134 +7,125 @@
 {% endblock %}
 
 {% block content %}
-    <!-- 게임이 시작되면 나오는 페이지 -->
+<!-- 게임이 시작되면 나오는 페이지 -->
 
-    <!-- 왼쪽 -->
-    <div class="left">
-        <!-- 투표 왼쪽 이미지 -->
-        <img src="" alt="" class="left_img">
+<!-- 왼쪽 -->
+<div class="left music" data-like="">
+    <!-- 투표 왼쪽 이미지 -->
+    <img src="" alt="" class="left_img">
 
-        <!-- 왼쪽 정보 -->
-        <div class="left_content">
-            <h3 class="left_title">"왼쪽 정보 이름"</h3>
-            <p class="left_Information">
-                왼쪽 정보 내용 
-            </p>
+    <!-- 왼쪽 정보 -->
+    <div class="left_content">
+        <h3 class="left_title" id="left_title">"왼쪽 정보 이름"</h3>
+        <p class="left_Information">
+            왼쪽 정보 내용
+        </p>
+    </div>
+</div>
+
+<!-- 가운데 -->
+<div class="center">
+    <!-- 카테고리 이름 -->
+    <h1 class="kategory_name">카테고리</h1>
+    <!-- 현재 점수 표시 -->
+    <p class="score">현재 점수 : 점수</p>
+    <!-- vs 표시 -->
+    <div class="vs">vs</div>
+</div>
+
+<!-- 오른쪽 -->
+<div class="right music" data-like="">
+    <!-- 오른쪽 이미지 -->
+    <img src="" alt="" class="right_img">
+    <!-- 오른쪽 내용 -->
+    <div class="right_content">
+        <h3 class="right_title" data-like="">"오른쪽 정보 이름"</h3>
+        <!-- 업,다운 버튼 -->
+        <div class="survey_button_">
+            <button class="up">더 많이</button>
+            <button class="down">더 적게</button>
         </div>
+        <p class="left_Information right_Information">
+            오른쪽 정보 내용
+        </p>
     </div>
+</div>
 
-    <!-- 가운데 -->
-    <div class="center">
-        <!-- 카테고리 이름 -->
-        <h1 class="kategory_name">카테고리</h1>
-        <!-- 현재 점수 표시 -->
-        <p class="score">현재 점수 : 점수</p>
-        <!-- vs 표시 -->
-        <div class="vs">vs</div>
-    </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script language="javascript">
+    $(document).ready(function () {
+        var prev_music = ""
+        var curr_music = ""
+        var correct = ""
+        var cnt = 0
+        var point = 0
 
-    <!-- 오른쪽 -->
-    <div class="right">
-        <!-- 오른쪽 이미지 -->
-        <img src="" alt="" class="right_img">
-        <!-- 오른쪽 내용 -->
-        <div class="right_content">
-                <h3 class="right_title">"오른쪽 정보 이름"</h3>
-                    <!-- 업,다운 버튼 -->
-                    <div class="survey_button_">
-                        <button class="up">더 많이</button>
-                        <button class="down">더 적게</button>
-                    </div>
-                <p class="left_Information">
-                    오른쪽 정보 내용 
-                </p>
-            </div>
-    </div>
+        $.ajax({
+            url: '{% url "main:music_list_of_game" gamename %}',
+            type: 'POST',
+            success: function (response) {
+                for (var i = 0; i < response.length; i++)
+                    console.log(response[i].music)
 
-{% endblock %} 
+                prev_music = response[cnt]
+                curr_music = response[cnt + 1]
+                cnt += 1
+                correct = load_quiz(prev_music, curr_music, cnt)
 
+                $(".music").on('click', function () {
+                    console.log("클릭한 노래의 좋아요:" + $(this).data('like'))
+                    console.log('---------------------')
+                    // correct = load_quiz(prev_music, curr_music, cnt)
+                    if ($(this).data('like') == correct.music.like) {
+                        console.log("정답")
+                        point += 1
+                        console.log('점수' + point)
+                        cnt += 1
+                        prev_music = curr_music
+                        curr_music = response[cnt]
 
-<div class="music" id="1" data-like="111">
-
-        노래2
-    </div>
-    
-    <br><br>
-    <div class="music" id="2" data-like="123">
-    
-        노래2
-    </div>
-    
-    {% block js %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
-    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script language="javascript">
-        $(document).ready(function () {
-            var prev_music = ""
-            var curr_music = ""
-            var correct = ""
-            var cnt = 0
-            var point = 0
-    
-            $.ajax({
-                url: '{% url "main:music_list_of_game" gamename %}',
-                type: 'POST',
-                success: function (response) {
-                    for(var i=0; i<response.length; i++)
-                        console.log(response[i].music)
-    
-                    prev_music = response[cnt]
-                    curr_music = response[cnt+1]
-                    cnt +=1
-                    correct = load_quiz(prev_music, curr_music, cnt)
-    
-                    $(".music").on('click', function () {
-                        console.log("클릭한 노래의 좋아요:" + $(this).data('like'))
-                        console.log('---------------------')
-                        if ($(this).data('like') == correct.music.like) {
-                            console.log("정답")
-                            point += 1
-                            console.log('점수' + point)
-                            cnt +=1
-                            prev_music = correct
-                            curr_music = response[cnt]
-    
-                            if(cnt <= response.length){
-                                load_quiz(prev_music, curr_music, cnt)
-                            }
-                            else{
-                                console.log('더이상 문제가 없어요')
-                                window.location.href= "/" 
-                            }
-                            
+                        if (cnt != response.length) {
+                            correct = load_quiz(prev_music, curr_music, cnt)
                         } else {
-                            console.log("오답")
-                            console.log('점수' + point)
-                            window.location.href= "/" 
+                            console.log('더이상 문제가 없어요')
+                            window.location.href = "/"
                         }
-                    });
-    
-                },
-                error: function (response) {
-                    console.log(response);
-                }
-            });
+
+                    } else {
+                        console.log("오답")
+                        console.log('점수' + point)
+                        window.location.href = "/"
+                    }
+                });
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
         });
-    
-        function load_quiz(prev_music, curr_music, cnt) {
-            console.log('---------------------')
-            //좋아요 수 비교해 정답 저장
-            if (prev_music.music.like < curr_music.music.like)
-                correct = curr_music
-            else
-                correct = prev_music
-    
-            $('#1').html(prev_music.music.title + prev_music.music.like)
-            $('#1').data('like', prev_music.music.like)
-            $('#2').html(curr_music.music.title + curr_music.music.like)
-            $('#2').data('like', curr_music.music.like)
-            console.log('정답의 좋아요' + correct.music.like)
-            return correct
-        }
-    </script>
-    {% endblock js %}
+    });
+
+    function load_quiz(prev_music, curr_music, cnt) {
+        console.log('---------------------')
+        //좋아요 수 비교해 정답 저장
+        if (prev_music.music.like < curr_music.music.like)
+            correct = curr_music
+        else
+            correct = prev_music
+
+        console.log( window.location.origin+prev_music.music.album_cover)
+        $('.left_title').html(prev_music.music.title + " " + prev_music.music.like)
+        $('.left_Information').html(prev_music.music.artist)
+        $('.left_img').attr('src', prev_music.music.album_cover);
+        $('.left').data('like', prev_music.music.like)
+
+        $('.right_title').html(curr_music.music.title)
+        $('.right_Information').html(curr_music.music.artist)
+        $('.right').data('like', curr_music.music.like)
+        $('.right_img').attr('src', curr_music.music.album_cover);
+        console.log('정답의 좋아요' + correct.music.like)
+        return correct
+    }
+</script>
+{% endblock %}

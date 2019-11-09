@@ -14,7 +14,9 @@ def home(request):
 
 
 def select_game(request):
-    return render(request, 'main/select_game.html')
+    games = game.objects.all()
+    context = {'games': games}
+    return render(request, 'main/select_game.html', context)
 
 
 def start_game(request, gamename):
