@@ -1,3 +1,15 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<!-- css 링크 -->
+{% block header %}
+<style>
+</style>
+{% endblock %}
+
+{% block content %}
+
 <img src="{{ picture.image.url }}" width='700px' height='600px'>
 <h1>
     {{ picture.text }}
@@ -8,3 +20,6 @@
         <button class="strat" onclick="location.href='{% url 'main:select_game' %}'">게임시작</button>
     </div>
 </h1>
+
+
+{% endblock %} 
