@@ -1,3 +1,8 @@
 from django.contrib import admin
+from main.models import *
 
-# Register your models here.
+admin.site.register(music)
+admin.site.register(game)
+admin.site.register(musicgame)
+admin.site.register(success_music)
+admin.site.register(Profile)
