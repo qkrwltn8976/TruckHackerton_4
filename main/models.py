@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
 
+
 class music(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=100)
@@ -45,6 +46,10 @@ class success_music(models.Model):
     def __str__(self):
         return '{}: {}'.format(str(self.user), str(self.music))
     
+
+class end_page_picture(models.Model):
+    image = models.ImageField(upload_to="fail")
+    text = models.CharField(max_length=100)
 
 
 def on_post_save_for_user(sender, **kwargs):
