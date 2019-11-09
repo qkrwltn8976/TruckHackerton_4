@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+ 
+{% load staticfiles %}
+
+<!-- css 링크 -->
+{% block header %}
+<link rel="stylesheet" href="../../../hackerton_4/static/assets/css/select_game.css">
+{% endblock %}
+
+{% block content %}
+
+    <!-- 게임 고르는 페이지 입니다. -->
+
+    <!-- 배경이미지 -->
+    <div class="bg_img">
+        <img src="" alt="" class="bg">
+    </div>
+
+    <!-- 글내용 -->
+    <div class="content">
+        <h1 class="title">서비스 이름</h1>
+        <p>비교하고 싶은 키워드를 골라주세요.</p>
+
+            <!-- 카테고리 선택 버튼 -->
+            <div class="select_button">
+                <button>발라드</button>
+                <button>댄스</button>
+                <button>랩/힙합</button>
+                <button>R&B/Soul</button>
+                <button>인디음악</button>
+                <button>록/메탈</button>
+                <button>트로트</button>
+                <button>포크/블루스</button>
+                <button>2019</button>
+                <button>2018</button>
+                <button>2017</button>
+            </div>
+    </div>
+
+{% endblock %} 
