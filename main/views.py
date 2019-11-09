@@ -34,7 +34,7 @@ def music_list_of_game(request, gamename):
 
 def end_game(request, score):
     image_number = random.randint(1, 3)
-    picture = end_page_picture.objects.get(pk=image_number)
+    picture = end_page_picture.objects.get(pk=1)
     context = {
         'picture': picture,
         'score': score,
