@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+ 
+{% load staticfiles %}
+
+<!-- css 링크 -->
+{% block header %}
+<link rel="stylesheet" href="../../../hackerton_4/static/assets/css/start_game.css">
+{% endblock %}
+
+{% block content %}
+    <!-- 게임이 시작되면 나오는 페이지 -->
+
+    <!-- 왼쪽 -->
+    <div class="left">
+        <!-- 투표 왼쪽 이미지 -->
+        <img src="" alt="" class="left_img">
+
+        <!-- 왼쪽 정보 -->
+        <div class="left_content">
+            <h3 class="left_title">"왼쪽 정보 이름"</h3>
+            <p class="left_Information">
+                왼쪽 정보 내용 
+            </p>
+        </div>
+    </div>
+
+    <!-- 가운데 -->
+    <div class="center">
+        <!-- 카테고리 이름 -->
+        <h1 class="kategory_name">카테고리</h1>
+        <!-- 현재 점수 표시 -->
+        <p class="score">현재 점수 : 점수</p>
+        <!-- vs 표시 -->
+        <div class="vs">vs</div>
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right">
+        <!-- 오른쪽 이미지 -->
+        <img src="" alt="" class="right_img">
+        <!-- 오른쪽 내용 -->
+        <div class="right_content">
+                <h3 class="right_title">"오른쪽 정보 이름"</h3>
+                    <!-- 업,다운 버튼 -->
+                    <div class="survey_button_">
+                        <button class="up">더 많이</button>
+                        <button class="down">더 적게</button>
+                    </div>
+                <p class="left_Information">
+                    오른쪽 정보 내용 
+                </p>
+            </div>
+    </div>
+
+{% endblock %} 

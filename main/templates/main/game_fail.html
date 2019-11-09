@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<!-- css 링크 -->
+{% block header %}
+<link rel="stylesheet" href="../../../hackerton_4/static/assets/css/game_fail.css">
+{% endblock %}
+
+{% block content %}
+
+    <!-- 문제가 틀렸을때 오는 페이지 -->
+
+    <!-- 점수 표시해주는 글 -->
+    <div class="fail_content">
+        <p class="top">당신의 점수는?</p>
+        <h1>점수 넣어 주세요 점</h1>
+        <p class="bottom">땡땡땡, 다시해볼까요?</p>
+
+            <!-- 다시하는 버튼 -->
+            <div class="button">
+                <button class="main">메인으로</button>
+                <button class="retry">다시도전</button>
+            </div>
+    </div>
+
+{% endblock %} 
