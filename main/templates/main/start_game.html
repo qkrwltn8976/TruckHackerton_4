@@ -10,7 +10,7 @@
 <!-- 게임이 시작되면 나오는 페이지 -->
 
 <!-- 왼쪽 -->
-<div class="left music" data-like="">
+<div class="left">
     <!-- 투표 왼쪽 이미지 -->
     <img src="" alt="" class="left_img">
 
@@ -34,16 +34,16 @@
 </div>
 
 <!-- 오른쪽 -->
-<div class="right music" data-like="">
+<div class="right">
     <!-- 오른쪽 이미지 -->
     <img src="" alt="" class="right_img">
     <!-- 오른쪽 내용 -->
     <div class="right_content">
-        <h3 class="right_title" data-like="">"오른쪽 정보 이름"</h3>
+        <h3 class="right_title">"오른쪽 정보 이름"</h3>
         <!-- 업,다운 버튼 -->
         <div class="survey_button_">
-            <button class="up">더 많이</button>
-            <button class="down">더 적게</button>
+            <button class="up music" value="0">더 많이</button>
+            <button class="down music" value="0">더 적게</button>
         </div>
         <p class="left_Information right_Information">
             오른쪽 정보 내용
@@ -81,10 +81,12 @@
                 correct = load_quiz(prev_music, curr_music, cnt)
 
                 $(".music").on('click', function () {
-                    console.log("클릭한 노래의 좋아요:" + $(this).data('like'))
+                    // alert("클릭한 노래의 좋아요:" + $(this).attr('value'));
                     console.log('---------------------')
                     // correct = load_quiz(prev_music, curr_music, cnt)
-                    if ($(this).data('like') == correct.music.like) {
+                    var answer = $(this).text()
+                    console.log(answer)
+                    if (correct==answer) {
                         console.log("정답")
                         point += 1
                         console.log('점수' + point)
@@ -117,21 +119,21 @@
         console.log('---------------------')
         //좋아요 수 비교해 정답 저장
         if (prev_music.music.like < curr_music.music.like)
-            correct = curr_music
+            correct = "더 많이"
         else
-            correct = prev_music
+            correct = "더 적게"
 
         console.log( window.location.origin+prev_music.music.album_cover)
         $('.left_title').html(prev_music.music.title + " " + prev_music.music.like)
         $('.left_Information').html(prev_music.music.artist)
         $('.left_img').attr('src', prev_music.music.album_cover);
-        $('.left').data('like', prev_music.music.like)
+        $('.up').val(prev_music.music.like)
 
         $('.right_title').html(curr_music.music.title)
         $('.right_Information').html(curr_music.music.artist)
-        $('.right').data('like', curr_music.music.like)
+        $('.down').val(curr_music.music.like)
         $('.right_img').attr('src', curr_music.music.album_cover);
-        console.log('정답의 좋아요' + correct.music.like)
+        // console.log('정답의 좋아요' + correct.music.like)
         return correct
     }
 </script>
