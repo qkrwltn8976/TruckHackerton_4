@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="885af264-9877-4630-9215-9caf349cf9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TruckHackerton_4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="885af264-9877-4630-9215-9caf349cf9bb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +82,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            <state relative-caret-position="340">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://795883b9-2d54-42ab-aa39-028a172443fc/schema/main/table/main_end_page_picture">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="2f6de515-cab1-4d66-b033-b41aec6c84a5">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -155,7 +158,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="289" />
     <option name="y" value="158" />
     <option name="width" value="1398" />
@@ -173,11 +176,6 @@
             <path>
               <item name="TruckHackerton_4" type="b2602c69:ProjectViewProjectNode" />
               <item name="TruckHackerton_4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TruckHackerton_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TruckHackerton_4" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -383,7 +381,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573303833263</updated>
       <workItem from="1573303834658" duration="11874000" />
-      <workItem from="1573315815727" duration="13042000" />
+      <workItem from="1573315815727" duration="13336000" />
     </task>
     <servers />
   </component>
@@ -393,7 +391,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24916000" />
+    <option name="totallyTimeSpent" value="25210000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,7 +405,7 @@
   <component name="ToolWindowManager">
     <frame x="56" y="27" width="1864" height="1053" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12707183" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12707183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="manage.py@TruckHackerton_4" weight="0.21975583" />
@@ -423,7 +421,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32963374" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32963374" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27192008" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27192008" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5005525" side_tool="true" weight="0.44395116" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32963374" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -676,8 +674,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="340">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pipfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://795883b9-2d54-42ab-aa39-028a172443fc/schema/main/table/main_end_page_picture">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="2f6de515-cab1-4d66-b033-b41aec6c84a5">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
