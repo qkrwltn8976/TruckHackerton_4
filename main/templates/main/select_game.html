@@ -3,7 +3,28 @@
 
 <!-- css 링크 -->
 {% block header %}
-<link rel="stylesheet" href="../../../hackerton_4/static/assets/css/select_game.css">
+<style>
+        *{
+            text-align: center;
+        }
+
+        button {
+        background-color: white;
+        border-color: rgb(162, 0, 255);
+        border-radius: 10px;
+        width: 100px;
+        height: 60px;
+        font-size: 20px;
+        border-width: 4px;
+        margin-top: 50px;
+        display: inline-block;
+        }
+
+        img{
+            margin-top: 10%;
+            width: 300px;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -17,7 +38,7 @@
 
     <!-- 글내용 -->
     <div class="content">
-        <h1 class="title">서비스 이름</h1>
+        <h1 class="title">멜론 게임</h1>
         <p>비교하고 싶은 키워드를 골라주세요.</p>
             <!-- 카테고리 선택 버튼 -->
             <div class="select_button">
@@ -27,4 +48,4 @@
             </div>
     </div>
 
-{% endblock %} 
+{% endblock %}

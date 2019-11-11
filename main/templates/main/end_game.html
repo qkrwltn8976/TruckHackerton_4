@@ -1,10 +1,18 @@
-<img src="{{ picture.image.url }}" width='700px' height='600px'>
-<h1>
-    {{ picture.text }}
-    <p>
-        당신의 점수는? {{ score }}점 입니다!
-    </p>
-    <div class="button">
-        <button class="strat" onclick="location.href='{% url 'main:select_game' %}'">게임시작</button>
-    </div>
-</h1>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+<style> body, html { height: 100%; margin: 0; } .bg { /* The image used */ background-image: url("{{ picture.image.url }}"); /* Full height */ height: 100%; /* Center and scale the image nicely */ background-position: center; background-repeat: no-repeat; background-size: cover; }
+
+.bg > div { margin: 0; z-index: 100; background-color:white; width: 50%; }
+
+.center { position: relative; left: 25%; top: 60%; text-align: center; opacity: 0.6; font-weight: 900; font-size: 2rem; padding: 1%; }
+
+button { margin-top: 20px; color: #[707070](https://www.notion.so/707070); background-color: #fff; border-color: #[707070](https://www.notion.so/707070); width: 73px; cursor: default; padding: 8px; padding-left: 10px; padding-right: 10px; font-weight: 350; /* font-size: 0.65; */ line-height: 1.15; letter-spacing: .1rem; border-width: 1px; margin-right: 10px; margin-bottom: 10px; box-sizing: border-box; vertical-align: middle; float: none; display: inline-block; }
+</style>
+
+<div class='bg'> <div class='center'> {{ picture.text }} <p> 당신의 점수는? {{ score }}점 입니다! </p> <div class="button"> <button class="strat" onclick="location.href='{% url 'main:select_game' %}'">게임시작</button> </div> </div>
+</div>
+
+{% endblock %}
