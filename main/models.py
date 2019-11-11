@@ -20,9 +20,10 @@ class game(models.Model):
     def __str__(self):
         return self.name
 
+
 class musicgame(models.Model):
-    music = models.ForeignKey('music', on_delete=models.CASCADE,)
-    game = models.ForeignKey('game', on_delete=models.CASCADE,)
+    music = models.ForeignKey('music', on_delete=models.CASCADE, )
+    game = models.ForeignKey('game', on_delete=models.CASCADE, )
 
     def __str__(self):
         return '{} : {}'.format(str(self.game), str(self.music))
@@ -36,8 +37,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-    
-    
+
 
 class success_music(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -45,7 +45,7 @@ class success_music(models.Model):
 
     def __str__(self):
         return '{}: {}'.format(str(self.user), str(self.music))
-    
+
 
 class end_page_picture(models.Model):
     image = models.ImageField(upload_to="fail")
@@ -56,5 +56,6 @@ def on_post_save_for_user(sender, **kwargs):
     if kwargs['created']:
         user = kwargs['instance']
         Profile.objects.create(user=user)
+
 
 post_save.connect(on_post_save_for_user, sender=settings.AUTH_USER_MODEL)

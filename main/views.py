@@ -11,7 +11,7 @@ from main.serializers import MusicGameSerializer
 
 
 def home(request):
-	return render(request, 'main/home.html')
+    return render(request, 'main/home.html')
 
 
 def select_game(request):
@@ -24,6 +24,7 @@ def start_game(request, gamename):
     context = {'gamename': gamename}
     return render(request, 'main/start_game.html', context)
 
+
 @api_view(['POST'])
 def music_list_of_game(request, gamename):
     if request.method == 'POST':
@@ -31,6 +32,7 @@ def music_list_of_game(request, gamename):
         music_list = musicgame.objects.filter(game=gamename[0]).order_by('?')
         serializer = MusicGameSerializer(music_list, many=True)
         return Response(serializer.data)
+
 
 def end_game(request, score):
     image_number = random.randint(1, 3)
