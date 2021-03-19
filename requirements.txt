@@ -27,7 +27,7 @@ django-redis==4.10.0
 django-slack==5.14.0
 django-sslserver==0.21
 django-wordpress-api==0.2.0
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 idna==2.8
 importlib-metadata==0.20
 iso8601==0.1.12
